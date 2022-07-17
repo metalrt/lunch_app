@@ -1,20 +1,16 @@
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.decorators import login_required
-from django.db.models import Count, Sum
-from django.http import Http404, HttpResponseForbidden
+from django.contrib.auth import login
+from django.db.models import Sum
 from django.shortcuts import render, redirect
-
 # Create your views here.
 from rest_framework import viewsets, views, status
-from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer, HTMLFormRenderer
 from rest_framework.response import Response
 
 from lunch.forms import LunchAppUserCreationForm
 from lunch.models import Restaurant, Menu, Vote
-from lunch.permissions import EmployeePermission, RestaurantOwnerPermission
+from lunch.permissions import RestaurantOwnerPermission
 from lunch.serializers import RestaurantSerializer, MenuSerializer, VoteSerializer, VotingResultSerializer
 
 
